@@ -43,5 +43,5 @@ ax2.set_ylabel("Number of features", color=color)
 ax1.set_ylabel("Accuracy", color="tab:red")  # we already handled the x-label with ax1
 ax2.plot((assessment["c"]), assessment["n_features"], color=color)
 ax2.tick_params(axis="y", labelcolor=color)
-ax2.set_ylim((0, 5500))
+ax2.set_ylim((0, 5150))
 plt.show()
