@@ -19,7 +19,7 @@ def accuracy_features_lasso(C: float) -> dict:
     return {
         "c": C,
         "accuracy": (model.predict(X_test).ravel() == y_test.ravel()).mean(),
-        "n_features": np.sum(np.abs(model.coef_) < 1e-10),
+        "n_features": np.sum(np.abs(model.coef_) > 1e-10),
     }
 
 
@@ -52,8 +52,9 @@ plt.show()
 
 validation = pd.read_csv("data/digits_valid.data.txt", sep=" ", header=None).iloc[:, :-1]
 validation = scaler.transform(validation)
-model = LogisticRegression(penalty="l1", solver="saga", C=100.0)
+model = LogisticRegression(penalty="l1", solver="saga", C=10.0)
 model.fit(x, y)
-pd.DataFrame(model.predict(validation)).to_csv(
-    "results/digits_valid.labels.txt", index=False, header=None
+pd.DataFrame(model.predict_proba(validation)[:, 1]).to_csv(
+    "results/PAUPAC_digits_predictions.txt", index=False, header=None
 )
+pd.DataFrame(np.where(np.abs(model.coef_) > 1e-10)[1]).to_csv('results/PAUPAC_digits_features.txt', header=None, index=False)
