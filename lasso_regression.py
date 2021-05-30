@@ -6,9 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 scaler = StandardScaler()
-x = pd.read_csv("data/digits_train.data.txt", sep=" ").iloc[:, :-1]
+x = pd.read_csv("data/digits_train.data.txt", sep=" ", header=None).iloc[:, :-1]
 x = scaler.fit_transform(x)
-y = pd.read_csv("data/digits_train.labels.txt", sep=" ").to_numpy().ravel()
+y = pd.read_csv("data/digits_train.labels.txt", sep=" ", header=None).to_numpy().ravel()
 y = (y + 1) // 2
 X_train, X_test, y_train, y_test = train_test_split(x, y)
 
@@ -50,7 +50,7 @@ plt.show()
 
 ## Validation. I am choosing C=100 for the model
 
-validation = pd.read_csv("data/digits_valid.data.txt", sep=" ").iloc[:, :-1]
+validation = pd.read_csv("data/digits_valid.data.txt", sep=" ", header=None).iloc[:, :-1]
 validation = scaler.transform(validation)
 model = LogisticRegression(penalty="l1", solver="saga", C=100.0)
 model.fit(x, y)
