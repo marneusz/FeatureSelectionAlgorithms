@@ -31,17 +31,18 @@ fig, ax1 = plt.subplots()
 
 color = "tab:red"
 ax1.set_xlabel("C")
-ax1.set_xscale('log')
+ax1.set_xscale("log")
 ax1.plot((assessment["c"]), assessment["accuracy"], color=color)
 ax1.tick_params(axis="y", labelcolor=color)
 ax1.set_ylim((0, 1))
 ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 
-ax2.set_xscale('log')
+ax2.set_xscale("log")
 color = "tab:blue"
 ax2.set_ylabel("Number of features", color=color)
 ax1.set_ylabel("Accuracy", color="tab:red")  # we already handled the x-label with ax1
 ax2.plot((assessment["c"]), assessment["n_features"], color=color)
 ax2.tick_params(axis="y", labelcolor=color)
 ax2.set_ylim((0, 5150))
+plt.title("Lasso regression for digits dataset.")
 plt.show()
