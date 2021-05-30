@@ -55,5 +55,5 @@ validation = scaler.transform(validation)
 model = LogisticRegression(penalty="l1", solver="saga", C=100.0)
 model.fit(x, y)
 pd.DataFrame(model.predict(validation)).to_csv(
-    "results/artificial_valid.labels.txt", index=False, header=None
+    "results/digits_valid.labels.txt", index=False, header=None
 )
