@@ -46,3 +46,14 @@ ax2.tick_params(axis="y", labelcolor=color)
 ax2.set_ylim((0, 5150))
 plt.title("Lasso regression for digits dataset.")
 plt.show()
+
+
+## Validation. I am choosing C=100 for the model
+
+validation = pd.read_csv("data/digits_valid.data.txt", sep=" ").iloc[:, :-1]
+validation = scaler.transform(validation)
+model = LogisticRegression(penalty="l1", solver="saga", C=100.0)
+model.fit(x, y)
+pd.DataFrame(model.predict(validation)).to_csv(
+    "results/artificial_valid.labels.txt", index=False, header=None
+)
