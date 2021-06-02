@@ -48,11 +48,11 @@ plt.title("Lasso regression for digits dataset.")
 plt.show()
 
 
-## Validation. I am choosing C=100 for the model
+## Validation. I am choosing C=0.01 for the model
 
 validation = pd.read_csv("data/digits_valid.data.txt", sep=" ", header=None).iloc[:, :-1]
 validation = scaler.transform(validation)
-model = LogisticRegression(penalty="l1", solver="saga", C=10.0)
+model = LogisticRegression(penalty="l1", solver="saga", C=1e-2)
 model.fit(x, y)
 pd.DataFrame(model.predict_proba(validation)[:, 1]).to_csv(
     "results/PAUPAC_digits_predictions.txt", index=False, header=None
