@@ -1,7 +1,7 @@
 # Feature Selection Algorithms
 Pacyna Paulina, Wójcik Mateusz
 
-Report and description of the project are included in `AML2.pdf`
+Report and description of the project are included in `report.pdf`
 
 ## Tested algorithms 
 - Lasso Logistic Regression
